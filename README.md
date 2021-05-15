@@ -10,10 +10,12 @@
 ### And when it does not work revert back to before solutions, no big deal
 
 # Local library
-some piece of soft to manage local library
+Piece of soft to manage local library
+
 * library has books
 * this books are categorized
 * they have assets, authors, due dates, reservations
 * Library has events: they host and book clubs  
+
 Real world, real project, real app; TDD&Laravel from scratch.
 
