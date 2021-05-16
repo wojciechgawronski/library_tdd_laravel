@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -7,11 +7,33 @@ use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
-    public function store()
+    public function store() : void
     {
-        Book::create([
-            'title' => \request('title'),
-            'author' => \request('author')
+        $data = $this->validateRequest();
+
+        // Book::create([
+        //    'title' => \request('title'),
+        //    'author' => \request('author')
+        // ]);
+        Book::create($data);
+    }
+
+    public function update(Book $book) : void
+    {
+        // $data = $this->validateRequest();
+        // $book->update($data);
+        // inline:
+        $book->update($this->validateRequest());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function validateRequest(): mixed
+    {
+        return \request()->validate([
+            'title' => 'required',
+            'author' => 'required',
         ]);
     }
 }

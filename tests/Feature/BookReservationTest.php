@@ -21,7 +21,56 @@ class BookReservationTest extends TestCase
             'title' => 'Some book title',
             'author' => 'woj'
         ]);
+
         $response->assertOk();
         $this->assertCount(1, Book::all());
+    }
+
+    /** @test */
+    public function a_title_is_required()
+    {
+        // $this->withoutExceptionHandling();
+
+        $response = $this->post('/books', [
+            'title' => '',
+            'author' => 'woj'
+        ]);
+
+        // Stwierdzenie, że sesja zawiera błędy
+        $response->assertSessionHasErrors('title');
+    }
+
+    /** @test */
+    public function a_author_is_required()
+    {
+        // $this->withoutExceptionHandling();
+
+        $response = $this->post('/books', [
+            'title' => 'some title',
+            'author' => ''
+        ]);
+
+        $response->assertSessionHasErrors('author');
+    }
+
+    /** @test */
+    public function a_book_can_be_updated()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->post('/books', [
+            'title' => 'some title',
+            'author' => 'woj'
+        ]);
+
+        $book = Book::first();
+
+        $response = $this->patch('/books/' . $book->id, [
+            'title' => 'new title',
+            'author' => 'new author'
+        ]);
+
+        $this->assertEquals('new title', Book::first()->title);
+        $this->assertEquals('new author', Book::first()->author);
     }
 }
