@@ -20,4 +20,11 @@ class Author extends Model
     {
         $this->attributes['birth'] = Carbon::parse($birth);
     }
+
+    public function setAuthorAttributes($author)
+    {
+        $this->attributes['author_id'] = Author::firstOfCreate([
+            'name' => $author,
+        ]);
+    }
 }
