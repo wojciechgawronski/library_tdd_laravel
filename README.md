@@ -1,10 +1,13 @@
-*Is this workflow going to work with you?*
-*Honestly that`s up to you.*
+> git clone ...
+> composer update
+> sudo chmod 777 -R storage/logs/
+> sudo chmod 777 -R storage/framework/
+
+*Is this workflow going to work with you? Honestly that`s up to you.*
 *Only you can what's the workflow that works for you.* 
 
-*It's good to constatly changing and evolving and looking for better ways to gain new experiences? I'm not sure, propably yes.*
-
-*New things may work or may not work. And then it will make revert, BACK TO OLD WAYS*
+*It's good to constatly changing and evolving and looking for better ways to gain new experiences? I'm not sure, propably yes.
+*New things may work or may not work. We always can make revert and go back to old ways.*
 
 ### Don't be afraid to try new things
 ### And when it does not work revert back to before solutions, no big deal
