@@ -1,7 +1,9 @@
-> git clone ...
-> composer update
-> sudo chmod 777 -R storage/logs/
-> sudo chmod 777 -R storage/framework/
+> git clone ... 
+> composer update;<br>
+> sudo chmod 777 -R storage/logs/; <br>
+> sudo chmod 777 -R storage/framework/; <br>
+> phpunit --filter a_book_can_be_updated; <br>
+> phpunit; <br>
 
 *Is this workflow going to work with you? Honestly that`s up to you.*
 *Only you can what's the workflow that works for you.* 
