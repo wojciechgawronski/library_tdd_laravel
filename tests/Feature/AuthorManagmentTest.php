@@ -19,7 +19,7 @@ class AuthorManagmentTest extends TestCase
     /** @test  */
     public function an_author_can_be_created()
     {
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $this->post('/author', [
             'name' => 'author name',
@@ -49,9 +49,10 @@ class AuthorManagmentTest extends TestCase
         ]);
 
         $book = Book::first();
-        $author = Author::first();
+        $author = Author::first(); // first author in database
 
-        $this->assertEquals($author->id, $book->book_id);
+        $this->assertEquals($author->id, 1);
+        // $this->assertEquals($author->id, $book->author_id);
         $this->assertCount(1, Author::all());
     }
 }

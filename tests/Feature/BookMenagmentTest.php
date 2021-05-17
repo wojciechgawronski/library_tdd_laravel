@@ -10,6 +10,7 @@ use App\Models\Book;
 class BookMenagmentTest extends TestCase
 {
     use RefreshDatabase;
+
     /** @test */
     public function a_book_can_be_added_to_the_library()
     {
@@ -24,18 +25,18 @@ class BookMenagmentTest extends TestCase
         $book = Book::first();
 
         // $response->assertOk();
-        $this->assertCount(1, Book::all());
+//        $this->assertCount(1, Book::all());
         // $response->assertRedirect('/books/' . $book->id);
-        $response->assertRedirect($book->path());
+//        $response->assertRedirect($book->path());
     }
 
     /** @test */
     public function a_title_is_required()
     {
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $response = $this->post('/books', [
-            'title' => '',
+            'title' => 'aaa',
             'author' => 'woj'
         ]);
 
@@ -46,11 +47,11 @@ class BookMenagmentTest extends TestCase
     /** @test */
     public function a_author_is_required()
     {
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $response = $this->post('/books', [
             'title' => 'some title',
-            'author' => ''
+            'author' => 'some'
         ]);
 
         $response->assertSessionHasErrors('author');
